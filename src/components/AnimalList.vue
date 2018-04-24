@@ -52,6 +52,8 @@
   </tbody>
   </table>
 
+ 
+
   </div>
 </template>
 
@@ -70,6 +72,7 @@ export default {
   name: 'AnimalList',
   data(){
     return{
+      
       sectors:sectors,
       animals:[
           {sort:'tiger',name:'Bill',dateOfBirth:'1.4.2017.',sector:sectors[2]},

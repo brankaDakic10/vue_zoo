@@ -2,16 +2,21 @@
   <div id="app">
    
     <AnimalList/>
+    <ButtonDisabled/>
+    <SimpleCalculator/>
   </div>
 </template>
 
 <script>
 import AnimalList from './components/AnimalList.vue'
-
+import  ButtonDisabled from './components/ButtonDisabled.vue'
+import  SimpleCalculator from './components/SimpleCalculator.vue'
 export default {
   name: 'app',
   components: {
-    AnimalList
+    AnimalList,
+    ButtonDisabled,
+    SimpleCalculator
   }
 }
 </script>

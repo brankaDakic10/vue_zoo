@@ -10,7 +10,7 @@
       <button type='submit'>Add Animal</button>
   </form>
 
-
+   <h2>Animals table</h2>
    <table>
   <thead>
     <th>Species</th>
@@ -29,16 +29,29 @@
    <td>{{animal.dateOfBirth ||'nepoznat'}} </td>
 
     <td>{{animal.sector.name}} </td>
-     <td>{{animal.sector.surface}} </td>
-    <button @click="removeAnimal(animal)"> Remove </button> 
-    </td> 
-    <td> 
-    <button @click="moveAnimal(animal)"> Move to top </button> 
-    </td> 
+    <td>{{animal.sector.surface}} </td>
+   <td><button @click="removeAnimal(animal)"> Remove </button></td>  
+    
+    <td><button @click="moveAnimal(animal)"> Move to top </button></td>  
     </tr>
-   </tbody>
+    </tbody>
 </table>
-   
+      
+      
+  <h2>Sectors table</h2>
+  <table>
+  <thead>
+    <th>Sector name</th>
+    <th>&nbsp</th>
+  </thead>
+  <tbody>
+  <tr v-for="(sector, key) in sectors" :key="key" >
+  <td>{{sector.name}}</td>
+  <td><button @click="showAnimals(sector)">Show list of animals</button></td> 
+  </tr>
+  </tbody>
+  </table>
+
   </div>
 </template>
 
@@ -91,7 +104,16 @@ export default {
        this.newAnimal={}
 
     },
-   
+   showAnimals(sector){
+     var list='';
+     this.animals.forEach(function(animal) {
+      
+      if(animal.sector === sector){
+          list+= animal.name+' ';
+    }
+    });
+      alert(list);
+   }
 
 
    

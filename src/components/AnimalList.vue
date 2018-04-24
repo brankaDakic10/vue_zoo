@@ -6,6 +6,7 @@
     <th>Name</th> 
     <th>Date Of Birth</th>
      <th>&nbsp</th>
+     <th>&nbsp</th>
   </thead>
   <tbody>
   <tr v-for="(animal, key) in animals" :key="key" >
@@ -16,12 +17,16 @@
     <td> 
     <button @click="removeAnimal(animal)"> Remove </button> 
     </td> 
+    <td> 
+    <button @click="moveAnimal(animal)"> Move to top </button> 
+    </td> 
     </tr>
    </tbody>
 </table>
    
   </div>
 </template>
+
 
 
 <script>
@@ -47,8 +52,18 @@ export default {
     removeAnimal(animal){
 
       this.animals.splice(this.animals.indexOf(animal),1);
-  }
+  },
+     moveAnimal(animal){
+       
+      this.animals.splice(this.animals.indexOf(animal),1);
+      this.animals.unshift(animal);
+    
+      
+     }
+   
 
+
+   
  }
 
 }

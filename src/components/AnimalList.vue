@@ -13,11 +13,13 @@
 
    <table>
   <thead>
-    <th>Sort</th>
+    <th>Species</th>
     <th>Name</th> 
     <th>Date Of Birth</th>
-     <th>&nbsp</th>
-     <th>&nbsp</th>
+    <th>Sector name</th>
+    <th>Sector surface</th>
+    <th>&nbsp</th>
+    <th>&nbsp</th>
   </thead>
   <tbody>
   <tr v-for="(animal, key) in animals" :key="key" >
@@ -25,7 +27,9 @@
     <td>{{animal.sort}}</td>
     <td>{{animal.name}}</td>
    <td>{{animal.dateOfBirth ||'nepoznat'}} </td>
-    <td> 
+
+    <td>{{animal.sector.name}} </td>
+     <td>{{animal.sector.surface}} </td>
     <button @click="removeAnimal(animal)"> Remove </button> 
     </td> 
     <td> 
@@ -41,28 +45,34 @@
 
 
 <script>
+const sectors=[
+    {name:'Water-animals',surface:'Water'},
+    {name:'Fawl',surface:'Kages'},
+    {name:'Predators',surface:'Kages'}
+  ];
+
+
+
 export default {
   name: 'AnimalList',
   data(){
     return{
-
- animals:[
-     {sort:'tiger',name:'Bill',dateOfBirth:'1.4.2017.'},
-     {sort:'flamingo',name:'Lena',dateOfBirth:'13.10.2017.'},
-     {sort:'leon',name:'Sam',dateOfBirth:''},
-     {sort:'monkey',name:'Joe',dateOfBirth:'11.11.2005.'},
-     {sort:'elephant',name:'Nill',dateOfBirth:'19.1.2000.'}
-   ]
+      sectors:sectors,
+      animals:[
+          {sort:'tiger',name:'Bill',dateOfBirth:'1.4.2017.',sector:sectors[2]},
+          {sort:'flamingo',name:'Lena',dateOfBirth:'13.10.2017.',sector:sectors[1]},
+          {sort:'leon',name:'Sam',dateOfBirth:'',sector:sectors[2]},
+          {sort:'monkey',name:'Joe',dateOfBirth:'11.11.2005.',sector:sectors[1]},
+          {sort:'elephant',name:'Nill',dateOfBirth:'19.1.2000.',sector:sectors[1]}
+        ]
    ,
-   newAnimal:{
-       sort:'',
-       name:'',
-       dateOfBirth:''
-         
-      }
-
-
-  }
+      newAnimal:{
+          sort:'',
+          name:'',
+          dateOfBirth:''
+            
+          }
+         }
 },
 
   methods:{

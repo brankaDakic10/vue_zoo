@@ -1,5 +1,16 @@
 <template>
   <div>
+   <form @submit.prevent='addAnimal'>
+      <label>Sort</label>
+      <input v-model='newAnimal.sort' type='text' placeholder='Enter animal sort'>
+      <label>Name</label>
+      <input v-model='newAnimal.name'type='text' placeholder='Enter animal name'>
+      <label>Date Of Birth</label>
+      <input v-model='newAnimal.dateOfBirth' type='text' placeholder='Enter animal date of birth'>
+      <button type='submit'>Add Animal</button>
+  </form>
+
+
    <table>
   <thead>
     <th>Sort</th>
@@ -42,6 +53,13 @@ export default {
      {sort:'monkey',name:'Joe',dateOfBirth:'11.11.2005.'},
      {sort:'elephant',name:'Nill',dateOfBirth:'19.1.2000.'}
    ]
+   ,
+   newAnimal:{
+       sort:'',
+       name:'',
+       dateOfBirth:''
+         
+      }
 
 
   }
@@ -54,12 +72,15 @@ export default {
       this.animals.splice(this.animals.indexOf(animal),1);
   },
      moveAnimal(animal){
-       
+
       this.animals.splice(this.animals.indexOf(animal),1);
       this.animals.unshift(animal);
-    
-      
-     }
+  },
+  addAnimal(){
+       this.animals.push(this.newAnimal);
+       this.newAnimal={}
+
+    },
    
 
 
